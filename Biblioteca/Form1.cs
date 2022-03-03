@@ -18,20 +18,34 @@ namespace Biblioteca
             InitializeComponent();
             dataGridViewCategories.DataSource = DataSetHelper.GetInstance().DataSetLibrary;
             dataGridViewCategories.DataMember = DataSetHelper.TABLE_CATEGORIES;
+            //dataGridViewCategories.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCategories.AutoGenerateColumns = true;
+            dataGridViewCategories.AutoResizeColumns();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            new Category(textBoxNameCategory.Text, AgeRange.Age19to99);
+            //Category c = new Category(textBoxNameCategory.Text, AgeRange.Age19to99);
+            //Category.add(c);
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
 
-            var rows = dataGridViewCategories.SelectedRows;
-            if (rows.Count > 0) {
-                int index = dataGridViewCategories.SelectedRows[0].Index;
-                Category.removeIndex(index);
+            var currentRow = dataGridViewCategories.CurrentCell.RowIndex;
+            if (currentRow >= 0) {
+                Category.remove(currentRow);
+            }
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            var currentRow = dataGridViewCategories.CurrentCell.RowIndex;
+            if (currentRow >= 0)
+            {
+                Category c = Category.get(currentRow);
+                Console.WriteLine(c.Name);
+                //Category.update(currentRow, textBoxNameCategory.Text, AgeRange.Age0to5);
             }
         }
     }
