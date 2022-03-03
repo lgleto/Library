@@ -27,6 +27,7 @@ namespace Biblioteca
         {
             //Category c = new Category(textBoxNameCategory.Text, AgeRange.Age19to99);
             //Category.add(c);
+            (new FormAddCategory()).ShowDialog();
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
@@ -44,8 +45,8 @@ namespace Biblioteca
             if (currentRow >= 0)
             {
                 Category c = Category.get(currentRow);
-                Console.WriteLine(c.Name);
-                //Category.update(currentRow, textBoxNameCategory.Text, AgeRange.Age0to5);
+                (new FormAddCategory(currentRow,  c)).ShowDialog();
+            
             }
         }
     }

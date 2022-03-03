@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Biblioteca
 {
-    enum AgeRange { 
+    public enum AgeRange { 
         Age0to5,
         Age6to12,
         Age13to18,
         Age19to99
     }
 
-    class Category
+    public class Category
     {
 
         public string Name { get; set; }
